@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hrijul Dey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a10; --ink:#ece9e4; --mut:#9b95a3; --dim:#5c5766;
+  --hema:#8a7cc0; --eosin:#d4737e; --line:#ffffff14;
+  --sans:"Instrument Sans",sans-serif; --serif:"Fraunces",serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+canvas#bg{position:fixed;inset:0;z-index:0;pointer-events:none;width:100vw;height:100vh}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 28px}
+a{color:var(--ink);text-decoration:none}
+
+nav{display:flex;align-items:center;height:64px;font-size:13.5px;color:var(--mut)}
+nav .mono{color:var(--dim);margin-left:auto;display:flex;gap:18px}
+nav a:hover{color:var(--ink)}
+
+header{padding:72px 0 84px;position:relative}
+.who{width:104px;height:104px;border-radius:50%;object-fit:cover;position:absolute;top:56px;right:0;
+  border:1px solid var(--line);filter:saturate(.92)}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:22px}
+h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(40px,7vw,64px);line-height:1.12;letter-spacing:-.01em}
+h1 .r{color:var(--eosin)}
+.lede{max-width:520px;color:var(--mut);font-size:16.5px;margin-top:26px}
+.lede b{color:var(--ink);font-weight:500}
+.jump{margin-top:34px;display:flex;gap:22px;font-size:14px}
+.jump a{border-bottom:1px solid var(--line);padding-bottom:3px;color:var(--mut)}
+.jump a:hover{color:var(--ink);border-color:var(--eosin)}
+
+section{border-top:1px solid var(--line);padding:56px 0 64px}
+h2{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:30px}
+
+.era{display:flex;gap:26px;margin-bottom:26px;max-width:600px}
+.era .y{font-family:var(--mono);font-size:12px;color:var(--hema);white-space:nowrap;padding-top:4px}
+.era div p{color:var(--mut);font-size:14.5px}
+.era div p b{color:var(--ink);font-weight:500}
+
+.hg h3{font-family:var(--serif);font-weight:500;font-size:30px;letter-spacing:-.01em}
+.hg h3 span{font-family:var(--mono);font-size:12px;color:var(--dim);font-weight:400;margin-left:14px;letter-spacing:0}
+.hg>p{color:var(--mut);font-size:15px;max-width:580px;margin-top:16px}
+.hg>p b{color:var(--ink);font-weight:500}
+.hg>p .r{color:var(--eosin)}
+.datarow{font-family:var(--mono);font-size:12.5px;color:var(--mut);display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.datarow span i{font-style:normal;color:var(--dim);margin-right:8px}
+.datarow span b{font-weight:400;color:var(--ink)}
+.acts{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-size:13.5px;padding:9px 16px;border-radius:8px;border:1px solid var(--line);color:var(--mut)}
+.btn:hover{color:var(--ink);border-color:#ffffff2b}
+.btn.p{background:var(--hema);border-color:var(--hema);color:#0a0a10}
+.btn.p:hover{background:#9a8dd0}
+
+footer{border-top:1px solid var(--line);padding:44px 0 72px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--dim)}
+footer a{color:var(--mut);border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--ink)}
+@media(max-width:640px){.who{width:64px;height:64px;top:70px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="wrap">
+<nav><a href="/">Hrijul Dey</a><span class="mono"><a href="https://github.com/hr1juldey">github</a><a href="https://www.linkedin.com/in/dey-h-ml972">linkedin</a><a href="mailto:phant0mhriju@gmail.com">mail</a></span></nav>
+
+<header>
+  <img class="who" src="me.jpg" alt="Hrijul Dey" />
+  <div class="kick">Thane, India — open to remote</div>
+  <h1>I want silicon that<br><span class="r">behaves like biology.</span></h1>
+  <p class="lede">Biotechnologist by training, <b>self-taught in ML,</b> born in Kolkata to a nuclear physicist.
+  I build agent infrastructure, tissue classifiers and embodied software — <b>every one carries a gate that can
+  fail and a number that can be read.</b></p>
+  <div class="jump"><a href="#work">the thread</a><a href="#hg">histogate</a><a href="https://histogate.vercel.app">live demo ↗</a></div>
+</header>
+
+<section id="work">
+  <h2>the thread</h2>
+  <div class="era"><span class="y">kolkata, 1999</span><div><p>Born to a nuclear physicist and a teacher. Bengali-medium schooling at Ramakrishna Mission, where the only thing that mattered was how low the minimum went. Wanted medicine, ended up a <b>biotechnologist at VIT Vellore</b> — and taught myself the ML part, because I wanted silicon to behave like the cells I was studying.</p></div></div>
+  <div class="era"><span class="y">the day job</span><div><p>Agent infrastructure for a 500-person org — routing, budgets, failure isolation. Every quarter I find the repeated work and <b>build software factories around it</b>: tracking, trialing, deciding systems that build themselves. I just monitor.</p></div></div>
+  <div class="era"><span class="y">the nights</span><div><p>Personal builds: <b>tissue classifiers</b> that read slides like a pathologist, <b>motion rigs</b> that walk without limping, <b>software with a voice and a body</b>. All the same question: how far can silicon go before it counts as biology?</p></div></div>
+  <div class="era"><span class="y">off hours</span><div><p>Up at 5:30 — stretch, <b>swim</b> at the local club, cook the day's food, then cook more code than food. <b>Cyclist.</b> Jungle-walker. 3D-print what I design. Research papers and comics, both.</p></div></div>
+</section>
+
+<section id="hg" class="hg">
+  <h2>one specimen — shipped, public, live</h2>
+  <h3>HistoGate <span>stain-invariant tissue classifier</span></h3>
+  <p>A 9-class colorectal H&amp;E classifier that <b>declines tissue it doesn't recognize</b> instead of guessing.
+  First version scored 97% on its own data and <span class="r">78% on a hospital it never saw</span> — the fix was
+  Beer–Lambert staining physics baked into training, a k-NN familiarity gate, conformal sets on top.
+  Served live from my own GPU. The three failed training runs are in the repo.</p>
+  <div class="datarow">
+    <span><i>macro_f1</i><b>0.9781</b></span>
+    <span><i>ece</i><b>0.0064</b></span>
+    <span><i>ood_auroc</i><b>0.9763</b></span>
+    <span><i>size</i><b>51× smaller</b></span>
+    <span><i>speed</i><b>455.9 /s</b></span>
+  </div>
+  <div class="acts">
+    <a class="btn p" href="https://histogate.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
+    <a class="btn" href="https://github.com/hr1juldey/histogate" target="_blank" rel="noopener">Source + failure log ↗</a>
+    <a class="btn" href="https://github.com/hr1juldey/histogate/releases/download/v1.0/histogate_walkthrough_voiced_v5.mp4" target="_blank" rel="noopener">2.5-min walkthrough ↗</a>
+  </div>
+</section>
+
+<footer>
+  <span>phant0mhriju@gmail.com</span>
+  <span><a href="https://github.com/hr1juldey">github</a> · <a href="https://www.linkedin.com/in/dey-h-ml972">linkedin</a></span>
+</footer>
+</div>
+<script>
+// dendrite field: drifting nodes, hairline edges, rare eosin pulses. Hematoxylin on near-black.
+const c=document.getElementById('bg'),x=c.getContext('2d');
+let W,H,N=[];
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight;
+  N=Array.from({length:Math.min(64,Math.floor(W*H/18000))},()=>({
+    x:Math.random()*W,y:Math.random()*H,
+    vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,
+    r:1+Math.random()*1.6,hema:Math.random()<.62}))}
+rs();addEventListener('resize',rs);
+let pulses=[],t0=0;
+function edge(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+function step(ts){
+  const dt=Math.min(32,ts-(t0||ts));t0=ts;
+  x.clearRect(0,0,W,H);
+  for(const n of N){n.x+=n.vx*dt*.06;n.y+=n.vy*dt*.06;
+    if(n.x<-20)n.x=W+20;if(n.x>W+20)n.x=-20;if(n.y<-20)n.y=H+20;if(n.y>H+20)n.y=-20}
+  for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){
+    const d=edge(N[i],N[j]);
+    if(d<150){const a=(1-d/150)*.14;
+      x.strokeStyle=N[i].hema?`rgba(138,124,192,${a})`:`rgba(212,115,126,${a*.8})`;
+      x.lineWidth=.6;x.beginPath();x.moveTo(N[i].x,N[i].y);x.lineTo(N[j].x,N[j].y);x.stroke()}}
+  for(const n of N){x.fillStyle=n.hema?'rgba(138,124,192,.5)':'rgba(212,115,126,.32)';
+    x.beginPath();x.arc(n.x,n.y,n.r,0,7);x.fill()}
+  if(Math.random()<.012&&N.length>1&&pulses.length<3){
+    const a=N[Math.floor(Math.random()*N.length)];let b=null,bd=1e9;
+    for(const m of N){if(m!==a){const d=edge(a,m);if(d<bd){bd=d;b=m}}}
+    if(b)pulses.push({a,b,t:0})}
+  pulses=pulses.filter(p=>{p.t+=dt*.0012;if(p.t>=1)return false;
+    const px=p.a.x+(p.b.x-p.a.x)*p.t,py=p.a.y+(p.b.y-p.a.y)*p.t;
+    const g=x.createRadialGradient(px,py,0,px,py,9);
+    g.addColorStop(0,'rgba(212,115,126,.5)');g.addColorStop(1,'rgba(212,115,126,0)');
+    x.fillStyle=g;x.beginPath();x.arc(px,py,9,0,7);x.fill();return true});
+  requestAnimationFrame(step);
+}
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(still){
+  for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const d=edge(N[i],N[j]);
+    if(d<150){x.strokeStyle=`rgba(138,124,192,${(1-d/150)*.12})`;x.lineWidth=.6;
+      x.beginPath();x.moveTo(N[i].x,N[i].y);x.lineTo(N[j].x,N[j].y);x.stroke()}}
+  for(const n of N){x.fillStyle='rgba(138,124,192,.45)';x.beginPath();x.arc(n.x,n.y,n.r,0,7);x.fill()}
+}else requestAnimationFrame(step);
+</script>
+</body>
+</html>

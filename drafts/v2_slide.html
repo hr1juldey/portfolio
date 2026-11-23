@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hrijul Dey — HistoGate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0a0d; --ink:#f0ece7; --mut:#a39a94; --dim:#655e59;
+  --eosin:#d4737e; --teal:#5ec8b4; --line:#ffffff12;
+  --sans:"Instrument Sans",sans-serif; --serif:"Fraunces",serif; --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+
+.hero{position:relative;height:78vh;min-height:560px;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bgimg{position:absolute;inset:-4%;background:url(tissue.jpg) center/cover;filter:brightness(.42) saturate(1.05);animation:stage 52s ease-in-out infinite alternate;transform-origin:42% 58%}
+@keyframes stage{from{transform:scale(1.03) rotate(.2deg)}to{transform:scale(1.16) translate(-2.4%,1.8%) rotate(-.3deg)}}
+.reticle{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.5}
+.scalebar{position:absolute;left:28px;bottom:26px;z-index:1;font-family:var(--mono);font-size:10.5px;color:#e8d9d2a8;display:flex;align-items:center;gap:8px}
+.scalebar i{display:block;width:110px;height:1px;background:#e8d9d2a8;position:relative}
+.scalebar i::before,.scalebar i::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:#e8d9d2a8}
+.scalebar i::after{right:0}
+.hero{cursor:crosshair}
+.hero .bgimg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--bg) 96%)}
+.hwrap{position:relative;z-index:1;width:100%;padding-bottom:64px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
+.who{width:92px;height:92px;border-radius:50%;object-fit:cover;border:1px solid #ffffff2e;flex:none}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e8d9d2b0;margin-bottom:18px}
+h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(40px,6.5vw,62px);line-height:1.1;text-wrap:balance}
+h1 em{font-style:normal;color:var(--eosin)}
+.sub{color:#d8cfcb;width:min(480px,100%);margin-top:22px;font-size:16px}
+.sub b{color:var(--ink);font-weight:500}
+
+.navrow{display:flex;justify-content:space-between;padding:20px 0;font-family:var(--mono);font-size:12px;color:var(--dim);border-bottom:1px solid var(--line)}
+.navrow a{color:var(--mut)}.navrow a:hover{color:var(--ink)}
+
+.datarow{font-family:var(--mono);font-size:12px;color:var(--dim);display:flex;flex-wrap:wrap;gap:8px 26px;padding:14px 0;border-bottom:1px solid var(--line)}
+.datarow b{font-weight:400;color:var(--mut)}
+
+section{padding:58px 0 30px}
+h2{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:26px}
+.prose{max-width:640px;color:var(--mut);font-size:15px}
+.prose b{color:var(--ink);font-weight:500}
+.prose .r{color:var(--eosin)}
+
+/* the verdict panel — the site's one borrowed motif, from the shipped demo */
+.verdict{margin-top:40px;border:1px solid var(--line);border-radius:14px;background:#141216;overflow:hidden}
+.vhead{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+.vhead .ok{color:var(--teal)}
+.vbody{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.vleft{padding:26px;border-right:1px solid var(--line)}
+.vleft h3{font-family:var(--serif);font-weight:500;font-size:28px;letter-spacing:-.01em}
+.vleft p{color:var(--mut);font-size:14px;margin-top:14px}
+.vleft p b{color:var(--ink);font-weight:500}
+.vleft .acts{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:12.5px;padding:9px 14px;border-radius:8px;border:1px solid var(--line);color:var(--mut)}
+.btn:hover{color:var(--ink);border-color:#ffffff2b}
+.btn.p{background:var(--eosin);border-color:var(--eosin);color:#180d0f}
+.btn.p:hover{background:#e08894}
+.vright{padding:26px;font-family:var(--mono)}
+.vright .big{font-size:clamp(40px,6vw,58px);font-weight:500;color:var(--ink);line-height:1}
+.vright .cap{font-size:11.5px;color:var(--dim);margin:6px 0 22px}
+.bar{margin-bottom:14px}
+.bar .lab{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-bottom:5px}
+.bar .tr{height:5px;background:#ffffff0e;border-radius:3px;overflow:hidden}
+.bar .fl{height:100%;background:var(--eosin);border-radius:3px}
+.bar.t .fl{background:var(--teal)}
+.decl{font-size:11.5px;color:var(--dim);margin-top:20px;line-height:1.7}
+.decl b{color:var(--teal);font-weight:400}
+.decl .r{color:var(--eosin);font-weight:400}
+
+footer{padding:46px 0 72px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--dim);border-top:1px solid var(--line)}
+footer a{color:var(--mut);border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--ink)}
+@media(max-width:720px){.vbody{grid-template-columns:1fr}.vleft{border-right:none;border-bottom:1px solid var(--line)}.hwrap{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero .bgimg{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bgimg"></div>
+  <svg class="reticle" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="50" y1="42" x2="50" y2="58" stroke="#e8d9d2" stroke-width=".15" vector-effect="non-scaling-stroke"/>
+    <line x1="42" y1="50" x2="58" y2="50" stroke="#e8d9d2" stroke-width=".15" vector-effect="non-scaling-stroke"/>
+    <circle cx="50" cy="50" r="7" fill="none" stroke="#e8d9d2" stroke-width=".15" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <div class="scalebar"><i></i>≈ 100 µm · demo_slide.tif · native</div>
+  <div class="wrap hwrap">
+    <div>
+      <div class="kick">Hrijul Dey — Thane, India — open to remote</div>
+      <h1>I want silicon that <em>behaves like biology.</em></h1>
+      <p class="sub">Biotechnologist by training, self-taught in ML. I build agent infrastructure, tissue
+      classifiers, embodied software — <b>each one carries a gate that can fail and a number that can be read.</b></p>
+    </div>
+    <img class="who" src="me.jpg" alt="Hrijul Dey" />
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="navrow">
+    <span>hr1juldey</span>
+    <span><a href="https://github.com/hr1juldey">github</a> · <a href="https://www.linkedin.com/in/dey-h-ml972">linkedin</a> · <a href="mailto:phant0mhriju@gmail.com">phant0mhriju@gmail.com</a></span>
+  </div>
+
+  <section>
+    <h2>the shape of it</h2>
+    <p class="prose"><b>Kolkata, 1999 — born to a nuclear physicist.</b> Bengali-medium school at Ramakrishna
+    Mission. Wanted medicine, became a <b>biotechnologist at VIT Vellore</b>, then taught myself ML — because I
+    wanted silicon to behave like the cells I was studying.</p>
+    <p class="prose" style="margin-top:18px"><b>The day job — agent infrastructure.</b> The platform a 500-person org
+    works through daily: routing, budgets, failure isolation, token cost down <span class="r">15×</span>. Every quarter
+    I find the repeated work and build software factories around it. The system builds itself. I monitor.</p>
+    <p class="prose" style="margin-top:18px"><b>The nights — personal builds.</b> Tissue classifiers, motion rigs
+    that walk without limping, software with a voice and a body. Up at 5:30, swim, cook, then cook more code than
+    food. Cyclist. Jungle-walker. Same question underneath all of it.</p>
+  </section>
+
+  <div class="datarow">
+    <span>demo runs on: my own GPU</span><span>uptime: always-on</span><span>training runs published: <b>3 failures</b></span>
+  </div>
+
+  <section>
+    <div class="verdict">
+      <div class="vhead"><span>histogate · v1.0 · 9 of 9 gate checks pass</span><span class="ok">● live</span></div>
+      <div class="vbody">
+        <div class="vleft">
+          <h3>HistoGate</h3>
+          <p>Stain-invariant 9-class colorectal H&amp;E classifier. First version scored 97% on its own data and
+          <b>78% on a hospital it never saw</b> — fixed with Beer–Lambert staining physics in training,
+          a k-NN familiarity gate, conformal sets on top. <b>It declines tissue it doesn't recognize.</b>
+          The three failed training runs are in the repo.</p>
+          <div class="acts">
+            <a class="btn p" href="https://histogate.vercel.app" target="_blank" rel="noopener">try the demo ↗</a>
+            <a class="btn" href="https://github.com/hr1juldey/histogate" target="_blank" rel="noopener">source ↗</a>
+            <a class="btn" href="https://github.com/hr1juldey/histogate/releases/download/v1.0/histogate_walkthrough_voiced_v5.mp4" target="_blank" rel="noopener">walkthrough video ↗</a>
+          </div>
+        </div>
+        <div class="vright">
+          <div class="big">0.9781</div>
+          <div class="cap">external macro-F1 · CRC-VAL</div>
+          <div class="bar"><div class="lab"><span>familiarity gate</span><span>AUROC 0.9763</span></div><div class="tr"><div class="fl" style="width:97.6%"></div></div></div>
+          <div class="bar t"><div class="lab"><span>calibration (1−ECE)</span><span>0.9936</span></div><div class="tr"><div class="fl" style="width:99.4%"></div></div></div>
+          <div class="bar"><div class="lab"><span>size vs baseline</span><span>51× smaller</span></div><div class="tr"><div class="fl" style="width:60%"></div></div></div>
+          <div class="decl">foreign-organ test, live: <b>56 patches</b> · 15 answered · <span class="r">41 declined — the gate refusing lymph node, not the model failing</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>phant0mhriju@gmail.com</span>
+    <span><a href="https://github.com/hr1juldey">github</a> · <a href="https://www.linkedin.com/in/dey-h-ml972">linkedin</a></span>
+  </footer>
+</div>
+</body>
+</html>

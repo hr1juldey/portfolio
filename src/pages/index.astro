@@ -1,179 +1,203 @@
 ---
-const gh = "https://github.com/hr1juldey";
-const video = "https://github.com/hr1juldey/histogate/releases/download/v1.0/histogate_walkthrough_voiced_v5.mp4";
 ---
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hrijul Dey — measured systems, shipped</title>
-  <meta name="description" content="Agent infrastructure in production; medical and motion ML since 2019. Every system gets a gate that can fail and a number that can be read." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%235e6ad2'/><text x='16' y='22' font-size='16' font-family='monospace' fill='white' text-anchor='middle'>H</text></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #08090a; --t1: #f7f8f8; --t2: #c3c6cb; --t3: #8a8f98; --t4: #62676f;
-      --b-subtle: #ffffff0d; --b-std: #ffffff1a; --accent: #5e6ad2; --ok2: #4ae38b;
-      --mono: 'JetBrains Mono', monospace;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--t1); font-family: Inter, system-ui, sans-serif;
-      line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    .wrap { max-width: 860px; margin: auto; padding: 0 24px; }
-    a { color: inherit; }
-    .mono { font-family: var(--mono); }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hrijul Dey — field notes</title>
+<meta name="description" content="Biotechnologist by training, self-taught in ML. Agent infrastructure, tissue classifiers, embodied software — silicon that behaves like biology." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23b8525f'/><text x='16' y='22' font-size='16' font-family='serif' fill='white' text-anchor='middle'>H</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script is:inline>
+  const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = t;
+</script>
+<style is:global>
+:root{
+  --paper:#f5f1e9; --card:#fffdf8; --ink:#211d19; --mut:#6b645b; --dim:#a09889;
+  --eosin:#b8525f; --hema:#47406e; --rule:#211d1922;
+  --graph-stroke:#47406e;
+}
+:root[data-theme="dark"]{
+  --paper:#14120f; --card:#1d1a16; --ink:#ece7de; --mut:#a89f92; --dim:#6e675d;
+  --eosin:#d4737e; --hema:#9a8dd0; --rule:#ffffff1f;
+  --graph-stroke:#9a8dd0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Fraunces",serif;line-height:1.7;
+  font-optical-sizing:auto;-webkit-font-smoothing:antialiased;transition:background .25s ease,color .25s ease}
+.wrap{max-width:920px;margin:0 auto;padding:0 32px}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"JetBrains Mono",monospace}
 
-    nav { position: sticky; top: 0; z-index: 10; background: rgba(8,9,10,0.82);
-      backdrop-filter: blur(10px); border-bottom: 1px solid var(--b-subtle); }
-    .navrow { display: flex; align-items: center; gap: 18px; height: 56px; }
-    .mark { display: flex; gap: 8px; align-items: center; font-weight: 600; font-size: 14.5px; text-decoration: none; }
-    .mark i { width: 20px; height: 20px; border-radius: 6px; background: var(--accent);
-      display: inline-flex; align-items: center; justify-content: center;
-      font-style: normal; font-family: var(--mono); font-size: 12px; color: #fff; }
-    .navlinks { margin-left: auto; display: flex; gap: 16px; font-size: 13.5px; }
-    .navlinks a { color: var(--t3); text-decoration: none; }
-    .navlinks a:hover { color: var(--t1); }
+.tog{position:fixed;top:14px;right:14px;z-index:5;font-family:"JetBrains Mono",monospace;font-size:11px;
+  letter-spacing:.08em;color:var(--dim);background:none;border:1px solid var(--rule);border-radius:8px;
+  padding:6px 11px;cursor:pointer}
+.tog:hover{color:var(--ink);border-color:var(--dim)}
 
-    header { padding: 96px 0 40px; }
-    .kicker { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--t4); margin-bottom: 18px; }
-    h1 { font-size: clamp(34px, 5.4vw, 56px); font-weight: 500; letter-spacing: -1.4px; line-height: 1.06; }
-    h1 em { font-style: normal; color: var(--accent); }
-    .lead { font-size: 17.5px; color: var(--t3); max-width: 560px; margin-top: 22px; }
-    .cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; height: 38px; padding: 0 16px;
-      border-radius: 9px; font-size: 13.5px; text-decoration: none; }
-    .btn.primary { background: var(--accent); color: #fff; font-weight: 500; }
-    .btn.primary:hover { background: #6e79dd; }
-    .btn.ghost { border: 1px solid var(--b-std); color: var(--t2); }
-    .btn.ghost:hover { color: var(--t1); border-color: #ffffff2e; }
+header{padding:64px 0 72px;display:grid;grid-template-columns:1fr 200px;gap:48px;align-items:end}
+.kick{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:24px}
+h1{font-weight:300;font-size:clamp(44px,7vw,76px);line-height:1.04;letter-spacing:-.02em;font-variation-settings:"opsz" 100}
+h1 em{font-style:italic;font-weight:400;color:var(--hema)}
+.lede{margin-top:26px;font-size:17px;color:var(--mut);max-width:480px}
+.lede b{color:var(--ink);font-weight:500}
+.photo{justify-self:end;text-align:center}
+.photo img{width:200px;height:200px;object-fit:cover;border:1px solid var(--rule);padding:6px;background:var(--card);
+  filter:sepia(.16) saturate(.82) contrast(.97)}
+.photo figcaption{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);margin-top:8px}
 
-    section { padding: 44px 0; border-top: 1px solid var(--b-subtle); }
-    h2 { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--t4); margin-bottom: 26px; font-family: var(--mono); }
+.rule{border:none;border-top:1px solid var(--rule);margin:0}
 
-    .story { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
-    .story .era b { display: block; font-size: 15.5px; font-weight: 600; margin-bottom: 6px; }
-    .story .era span { font-family: var(--mono); font-size: 11px; color: var(--accent); }
-    .story .era p { font-size: 14px; color: var(--t3); margin-top: 6px; }
+section{padding:52px 0 60px;display:grid;grid-template-columns:180px 1fr;gap:48px}
+section>h2{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);padding-top:6px}
+section>div{max-width:600px}
+.era{margin-bottom:24px;font-size:15.5px;color:var(--mut)}
+.era .y{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--hema);letter-spacing:.1em;display:block;margin-bottom:4px}
+.era b{color:var(--ink);font-weight:500}
 
-    .feature { border: 1px solid var(--b-std); border-radius: 14px; overflow: hidden; background: #ffffff04; }
-    .feature video { width: 100%; display: block; background: #000; aspect-ratio: 16/9; object-fit: contain; }
-    .fbody { padding: 22px 24px 26px; }
-    .fbody h3 { font-size: 21px; font-weight: 600; letter-spacing: -0.4px; }
-    .fbody h3 span { color: var(--t4); font-weight: 400; font-size: 14px; margin-left: 10px; }
-    .fbody p { font-size: 14.5px; color: var(--t3); margin-top: 10px; }
-    .facts { display: flex; gap: 26px; margin-top: 18px; flex-wrap: wrap; }
-    .facts div b { display: block; font-family: var(--mono); font-size: 19px; color: var(--t1); }
-    .facts div i { font-style: normal; font-size: 11.5px; color: var(--t4); }
+.note{font-size:15.5px;color:var(--mut)}
+.note b{color:var(--ink);font-weight:500}
+.note .r{color:var(--eosin)}
+.hg{border-top:1px solid var(--rule);padding-top:28px;margin-top:28px;display:grid;grid-template-columns:1fr 150px;gap:36px}
+.hg h3{font-weight:400;font-style:italic;font-size:26px;color:var(--ink)}
+.hg .n{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);letter-spacing:.08em;display:block;margin-bottom:10px}
+.hg p{font-size:14.5px;color:var(--mut);margin-top:12px}
+.hg p b{color:var(--ink);font-weight:500}
+.graph{padding-top:34px}
+.graph svg{width:150px;height:170px;overflow:visible}
+.graph path{fill:none;stroke:var(--graph-stroke);stroke-width:1;stroke-dasharray:340;stroke-dashoffset:340;animation:draw 2.8s ease-out .4s forwards}
+.graph circle{fill:var(--eosin);opacity:0;animation:pop .5s ease-out forwards}
+.graph circle:nth-of-type(1){animation-delay:.3s}.graph circle:nth-of-type(2){animation-delay:.9s}
+.graph circle:nth-of-type(3){animation-delay:1.5s}.graph circle:nth-of-type(4){animation-delay:2.1s}
+.graph circle:nth-of-type(5){animation-delay:2.6s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+.gcap{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--dim);margin-top:10px;line-height:1.6}
 
-    .proj { display: grid; gap: 12px; }
-    .prow { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--b-subtle); }
-    .prow:last-child { border-bottom: none; }
-    .prow a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--t1); white-space: nowrap; }
-    .prow a:hover { color: var(--accent); }
-    .prow span { font-size: 13.5px; color: var(--t3); }
+.readout{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mut);margin-top:24px;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0;display:flex;flex-wrap:wrap;gap:8px 24px}
+.readout i{font-style:normal;color:var(--dim);margin-right:6px}
+.readout b{font-weight:400;color:var(--ink)}
+.acts{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:12px}
+.acts a{color:var(--hema);border-bottom:1px solid var(--hema);padding-bottom:2px}
+.acts a:hover{color:var(--eosin);border-color:var(--eosin)}
+.plates{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap}
+.plates figure{text-align:center}
+.plates img{width:104px;height:104px;display:block}
+.plates figcaption{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--dim);margin-top:7px;line-height:1.5}
 
-    footer { padding: 44px 0 60px; border-top: 1px solid var(--b-subtle);
-      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--t4); }
-    footer a { color: var(--t3); text-decoration: none; }
-    footer a:hover { color: var(--t1); }
-    @media (max-width: 640px) { .navlinks span.opt { display: none; } }
-  </style>
+footer{padding:40px 0 80px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--dim)}
+footer .mono a{color:var(--mut);border-bottom:1px solid var(--rule)}
+footer .mono a:hover{color:var(--ink)}
+@media(max-width:760px){
+  header{grid-template-columns:1fr}.photo{justify-self:start}
+  section{grid-template-columns:1fr;gap:18px;padding:40px 0 44px}
+  .hg{grid-template-columns:1fr}.graph{display:none}
+  .tog{top:10px;right:10px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.graph path{stroke-dashoffset:0}.graph circle{opacity:1}}
+</style>
 </head>
 <body>
-  <nav><div class="wrap navrow">
-    <a class="mark" href="/"><i>H</i>Hrijul Dey</a>
-    <div class="navlinks">
-      <span class="opt"><a href="#work">Work</a></span>
-      <span class="opt"><a href="#projects">Projects</a></span>
-      <a href={gh} target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/dey-h-ml972" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-  </div></nav>
+<button class="tog" id="tog" aria-label="toggle dark mode">☾ dark</button>
+<div class="wrap">
 
-  <header><div class="wrap">
-    <div class="kicker">Thane, India · open to remote</div>
-    <h1>I build systems that<br /><em>refuse to guess.</em></h1>
-    <p class="lead">Agent infrastructure in production by day — an MCP gateway serving a 500-person org.
-      Medical and motion ML since 2019. Every system I ship gets a gate that can fail
-      and a number that can be read. Measured, not felt.</p>
-    <div class="cta">
-      <a class="btn primary" href="https://histogate.vercel.app" target="_blank" rel="noopener">Try the live demo →</a>
-      <a class="btn ghost" href={gh} target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </div></header>
+<header>
+  <div>
+    <div class="kick">field notes · thane, india · open to remote</div>
+    <h1>I want silicon that<br><em>behaves like biology.</em></h1>
+    <p class="lede">Biotechnologist by training, self-taught in ML, born in Kolkata to a nuclear physicist.
+    Agent infrastructure, tissue classifiers, embodied software — <b>a gate that can fail and a number that can be
+    read on every one.</b></p>
+  </div>
+  <figure class="photo">
+    <img src="/me.jpg" alt="Hrijul Dey" />
+    <figcaption>fig. 1 — the author, on two wheels most Sundays</figcaption>
+  </figure>
+</header>
 
-  <section id="work"><div class="wrap">
-    <h2>The story, short</h2>
-    <div class="story">
-      <div class="era">
-        <span>2019 — 2024</span>
-        <b>Medical &amp; motion AI</b>
-        <p>Posture detection, gait analysis, joint loading on CMU motion capture. Learned that a model passing every expected test can still fail the patient.</p>
-      </div>
-      <div class="era">
-        <span>2025 —</span>
-        <b>Agents &amp; LLM systems</b>
-        <p>Built and run the agent platform an organization depends on daily: routing, token budgets, failure isolation — token cost down 15× while usage went org-wide.</p>
-      </div>
-      <div class="era">
-        <span>Now</span>
-        <b>Both at once</b>
-        <p>HistoGate: pathology ML with production discipline — nine shipping gates, published failures, a live demo on my own hardware.</p>
-      </div>
-    </div>
-  </div></section>
+<hr class="rule" />
 
-  <section id="featured"><div class="wrap">
-    <h2>Featured — shipped and public</h2>
-    <div class="feature">
-      <video controls preload="metadata" playsinline src={video}
-        poster="https://histogate.vercel.app/histogate_walkthrough_poster.png">
-        HistoGate narrated walkthrough</video>
-      <div class="fbody">
-        <h3>HistoGate <span>stain-invariant tissue classifier</span></h3>
-        <p>A 9-class colorectal H&amp;E classifier that declines unfamiliar tissue instead of guessing —
-        Beer-Lambert stain physics baked into training, a k-NN familiarity gate, conformal prediction sets.
-        Served live from my own GPU. The three failed training runs are published in the repo, not hidden.</p>
-        <div class="facts">
-          <div><b>0.9781</b><i>external macro-F1</i></div>
-          <div><b>0.0064</b><i>calibration error</i></div>
-          <div><b>51×</b><i>smaller than baseline</i></div>
-          <div><b>455/s</b><i>patches on one GPU</i></div>
+<section>
+  <h2>field<br>notes</h2>
+  <div>
+    <div class="era"><span class="y">origins — kolkata, 1999</span>Born to a nuclear physicist and a teacher.
+    Ramakrishna Mission, Bengali medium, where only the minimum mattered. Wanted medicine, came out a
+    <b>biotechnologist (VIT Vellore)</b> — then taught myself the ML half, because I wanted silicon to behave
+    like the cells I was studying.</div>
+    <div class="era"><span class="y">habitat — the day job</span>Agent infrastructure for a 500-person org:
+    routing, budgets, failure isolation, token cost down 15×. Every quarter I find the repeated work and build
+    <b>software factories</b> around it — the system builds itself, I monitor.</div>
+    <div class="era"><span class="y">nocturnal — the nights</span>Tissue classifiers, motion rigs that walk without
+    limping, software with a voice and a body. One question underneath: <b>how far can silicon go before it counts
+    as biology?</b></div>
+    <div class="era"><span class="y">observed behaviour — mornings</span>Wake 5:30. Stretch stiff tendons.
+    <b>Swim</b> at the local club. Cook the day's food, then cook more code than food. Cyclist. Jungle-walker.
+    3D-print what I design. Papers and comics, both.</div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<section>
+  <h2>type<br>specimen</h2>
+  <div class="note">
+    <div class="hg">
+      <div>
+        <span class="n">HISTOGATE · STAIN-INVARIANT TISSUE CLASSIFIER · SHIPPED</span>
+        <h3>It declines tissue it doesn't recognize.</h3>
+        <p>A 9-class colorectal H&amp;E classifier. First version: <b>97% on its own data</b>,
+        <span class="r">78% on a hospital it never saw</span> — the stain problem. Fixed with Beer–Lambert
+        absorbance physics in training, a k-NN familiarity gate, conformal sets on top.
+        Served live from my own GPU; three failed training runs published in the repo.</p>
+        <div class="readout">
+          <span><i>macro_f1</i><b>0.9781</b></span>
+          <span><i>ece</i><b>0.0064</b></span>
+          <span><i>ood_auroc</i><b>0.9763</b></span>
+          <span><i>size</i><b>51×↓</b></span>
+          <span><i>speed</i><b>455.9/s</b></span>
         </div>
-        <div class="cta">
-          <a class="btn primary" href="https://histogate.vercel.app" target="_blank" rel="noopener">Live demo</a>
-          <a class="btn ghost" href={gh + "/histogate"} target="_blank" rel="noopener">Source &amp; failure log</a>
+        <div class="acts">
+          <a href="https://histogate.vercel.app" target="_blank" rel="noopener">live demo ↗</a>
+          <a href="https://github.com/hr1juldey/histogate" target="_blank" rel="noopener">source + failure log ↗</a>
+          <a href="https://github.com/hr1juldey/histogate/releases/download/v1.0/histogate_walkthrough_voiced_v5.mp4" target="_blank" rel="noopener">walkthrough ↗</a>
+        </div>
+        <div class="plates">
+          <figure><img src="/fig2a.png" alt="cell-dense region" /><figcaption>fig. 2a — cell-dense<br>≈ 100 µm · native</figcaption></figure>
+          <figure><img src="/fig2b.png" alt="adipose region" /><figcaption>fig. 2b — adipose<br>≈ 100 µm · native</figcaption></figure>
+          <figure><img src="/fig2c.png" alt="stroma margin" /><figcaption>fig. 2c — margin<br>≈ 100 µm · native</figcaption></figure>
         </div>
       </div>
-    </div>
-  </div></section>
-
-  <section id="projects"><div class="wrap">
-    <h2>Other public work</h2>
-    <div class="proj">
-      <div class="prow">
-        <a href={gh + "/ctx-gateway"} target="_blank" rel="noopener">ctx-gateway</a>
-        <span>The gateway pattern from my day job, rebuilt clean-room in public — capability registry, per-task routing, token budgets, runnable benchmark.</span>
-      </div>
-      <div class="prow">
-        <a href={gh + "/VerifAI"} target="_blank" rel="noopener">VerifAI</a>
-        <span>Fraud detection with self-supervised representation learning. Precision/recall gates, not vibes.</span>
-      </div>
-      <div class="prow">
-        <a href={gh} target="_blank" rel="noopener">Upstream contributions</a>
-        <span>22 PRs across 6 orgs in one week — huggingface/smolagents (one merged), NousResearch/hermes-agent, trailhq/Trail-Code. Found by running the tools daily.</span>
+      <div class="graph">
+        <svg viewBox="0 0 150 170" aria-hidden="true">
+          <path d="M 20 150 L 62 96 L 20 60 M 62 96 L 110 118 L 138 84 M 62 96 L 96 34 L 138 22" />
+          <circle cx="20" cy="150" r="3.5"/><circle cx="62" cy="96" r="5"/>
+          <circle cx="20" cy="60" r="3"/><circle cx="110" cy="118" r="4"/><circle cx="96" cy="34" r="3.5"/>
+        </svg>
+        <div class="gcap">familiarity gate,<br>k-NN, watching</div>
       </div>
     </div>
-  </div></section>
+  </div>
+</section>
 
-  <footer><div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-    <span>Hrijul Dey · <a href="mailto:phant0mhriju@gmail.com">phant0mhriju@gmail.com</a></span>
-    <span><a href={gh} target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/dey-h-ml972" target="_blank" rel="noopener">LinkedIn</a></span>
-  </div></footer>
+<footer>
+  <span class="mono">phant0mhriju@gmail.com</span>
+  <span class="mono"><a href="https://github.com/hr1juldey">github</a> · <a href="https://www.linkedin.com/in/dey-h-ml972">linkedin</a></span>
+</footer>
+</div>
+<script>
+  const tog = document.getElementById('tog');
+  const root = document.documentElement;
+  const label = () => tog.textContent = root.dataset.theme === 'dark' ? '☀ light' : '☾ dark';
+  label();
+  tog.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', root.dataset.theme);
+    label();
+  });
+</script>
 </body>
 </html>

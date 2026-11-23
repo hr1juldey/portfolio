@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Hrijul Dey — field notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5f1e9; --ink:#211d19; --mut:#6b645b; --dim:#a09889;
+  --eosin:#b8525f; --hema:#47406e; --rule:#211d1922;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"Fraunces",serif;line-height:1.7;
+  font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 32px}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"JetBrains Mono",monospace}
+
+header{padding:64px 0 72px;display:grid;grid-template-columns:1fr 200px;gap:48px;align-items:end}
+.kick{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:24px}
+h1{font-weight:300;font-size:clamp(44px,7vw,76px);line-height:1.04;letter-spacing:-.02em;font-variation-settings:"opsz" 100}
+h1 em{font-style:italic;font-weight:400;color:var(--hema)}
+.lede{margin-top:26px;font-size:17px;color:var(--mut);max-width:480px}
+.lede b{color:var(--ink);font-weight:500}
+.photo{justify-self:end;text-align:center}
+.photo img{width:200px;height:200px;object-fit:cover;border:1px solid var(--rule);padding:6px;background:#fffdf8;filter:sepia(.16) saturate(.82) contrast(.97)}
+.photo figcaption{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);margin-top:8px}
+
+.rule{border:none;border-top:1px solid var(--rule);margin:0}
+
+section{padding:52px 0 60px;display:grid;grid-template-columns:180px 1fr;gap:48px}
+section>h2{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);padding-top:6px}
+section>div{max-width:600px}
+.era{margin-bottom:24px;font-size:15.5px;color:var(--mut)}
+.era .y{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--hema);letter-spacing:.1em;display:block;margin-bottom:4px}
+.era b{color:var(--ink);font-weight:500}
+
+.note{font-size:15.5px;color:var(--mut)}
+.note b{color:var(--ink);font-weight:500}
+.note .r{color:var(--eosin)}
+.hg{border-top:1px solid var(--rule);padding-top:28px;margin-top:28px;display:grid;grid-template-columns:1fr 150px;gap:36px}
+.hg h3{font-weight:400;font-style:italic;font-size:26px;color:var(--ink)}
+.hg .n{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);letter-spacing:.08em;display:block;margin-bottom:10px}
+.hg p{font-size:14.5px;color:var(--mut);margin-top:12px}
+.hg p b{color:var(--ink);font-weight:500}
+.graph{padding-top:34px}
+.graph svg{width:150px;height:170px;overflow:visible}
+.graph path{fill:none;stroke:var(--hema);stroke-width:1;stroke-dasharray:340;stroke-dashoffset:340;animation:draw 2.8s ease-out .4s forwards}
+.graph circle{fill:var(--eosin);opacity:0;animation:pop .5s ease-out forwards}
+.graph circle:nth-of-type(1){animation-delay:.3s}.graph circle:nth-of-type(2){animation-delay:.9s}
+.graph circle:nth-of-type(3){animation-delay:1.5s}.graph circle:nth-of-type(4){animation-delay:2.1s}
+.graph circle:nth-of-type(5){animation-delay:2.6s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+.gcap{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--dim);margin-top:10px;line-height:1.6}
+
+.readout{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--mut);margin-top:24px;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0;display:flex;flex-wrap:wrap;gap:8px 24px}
+.readout i{font-style:normal;color:var(--dim);margin-right:6px}
+.readout b{font-weight:400;color:var(--ink)}
+.acts{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:12px}
+.acts a{color:var(--hema);border-bottom:1px solid var(--hema);padding-bottom:2px}
+.acts a:hover{color:var(--eosin);border-color:var(--eosin)}
+.plates{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap}
+.plates figure{text-align:center}
+.plates img{width:104px;height:104px;display:block}
+.plates figcaption{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--dim);margin-top:7px;line-height:1.5}
+
+footer{padding:40px 0 80px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--dim)}
+footer .mono a{color:var(--mut);border-bottom:1px solid var(--rule)}
+footer .mono a:hover{color:var(--ink)}
+@media(max-width:760px){
+  header{grid-template-columns:1fr}.photo{justify-self:start}
+  section{grid-template-columns:1fr;gap:18px;padding:40px 0 44px}
+  .hg{grid-template-columns:1fr}.graph{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.graph path{stroke-dashoffset:0}.graph circle{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <div class="kick">field notes · thane, india · open to remote</div>
+    <h1>I want silicon that<br><em>behaves like biology.</em></h1>
+    <p class="lede">Biotechnologist by training, self-taught in ML, born in Kolkata to a nuclear physicist.
+    Agent infrastructure, tissue classifiers, embodied software — <b>a gate that can fail and a number that can be
+    read on every one.</b></p>
+  </div>
+  <figure class="photo">
+    <img src="me.jpg" alt="Hrijul Dey" />
+    <figcaption>fig. 1 — the author, on two wheels most Sundays</figcaption>
+  </figure>
+</header>
+
+<hr class="rule" />
+
+<section>
+  <h2>field<br>notes</h2>
+  <div>
+    <div class="era"><span class="y">origins — kolkata, 1999</span>Born to a nuclear physicist and a teacher.
+    Ramakrishna Mission, Bengali medium, where only the minimum mattered. Wanted medicine, came out a
+    <b>biotechnologist (VIT Vellore)</b> — then taught myself the ML half, because I wanted silicon to behave
+    like the cells I was studying.</div>
+    <div class="era"><span class="y">habitat — the day job</span>Agent infrastructure for a 500-person org:
+    routing, budgets, failure isolation, token cost down 15×. Every quarter I find the repeated work and build
+    <b>software factories</b> around it — the system builds itself, I monitor.</div>
+    <div class="era"><span class="y">nocturnal — the nights</span>Tissue classifiers, motion rigs that walk without
+    limping, software with a voice and a body. One question underneath: <b>how far can silicon go before it counts
+    as biology?</b></div>
+    <div class="era"><span class="y">observed behaviour — mornings</span>Wake 5:30. Stretch stiff tendons.
+    <b>Swim</b> at the local club. Cook the day's food, then cook more code than food. Cyclist. Jungle-walker.
+    3D-print what I design. Papers and comics, both.</div>
+  </div>
+</section>
+
+<hr class="rule" />
+
+<section>
+  <h2>type<br>specimen</h2>
+  <div class="note">
+    <div class="hg">
+      <div>
+        <span class="n">HISTOGATE · STAIN-INVARIANT TISSUE CLASSIFIER · SHIPPED</span>
+        <h3>It declines tissue it doesn't recognize.</h3>
+        <p>A 9-class colorectal H&amp;E classifier. First version: <b>97% on its own data</b>,
+        <span class="r">78% on a hospital it never saw</span> — the stain problem. Fixed with Beer–Lambert
+        absorbance physics in training, a k-NN familiarity gate, conformal sets on top.
+        Served live from my own GPU; three failed training runs published in the repo.</p>
+        <div class="readout">
+          <span><i>macro_f1</i><b>0.9781</b></span>
+          <span><i>ece</i><b>0.0064</b></span>
+          <span><i>ood_auroc</i><b>0.9763</b></span>
+          <span><i>size</i><b>51×↓</b></span>
+          <span><i>speed</i><b>455.9/s</b></span>
+        </div>
+        <div class="acts">
+          <a href="https://histogate.vercel.app" target="_blank" rel="noopener">live demo ↗</a>
+          <a href="https://github.com/hr1juldey/histogate" target="_blank" rel="noopener">source + failure log ↗</a>
+          <a href="https://github.com/hr1juldey/histogate/releases/download/v1.0/histogate_walkthrough_voiced_v5.mp4" target="_blank" rel="noopener">walkthrough ↗</a>
+        </div>
+        <div class="plates">
+          <figure><img src="fig2a.png" alt="cell-dense region" /><figcaption>fig. 2a — cell-dense<br>≈ 100 µm · native</figcaption></figure>
+          <figure><img src="fig2b.png" alt="adipose region" /><figcaption>fig. 2b — adipose<br>≈ 100 µm · native</figcaption></figure>
+          <figure><img src="fig2c.png" alt="stroma margin" /><figcaption>fig. 2c — margin<br>≈ 100 µm · native</figcaption></figure>
+        </div>
+      </div>
+      <div class="graph">
+        <svg viewBox="0 0 150 170" aria-hidden="true">
+          <path d="M 20 150 L 62 96 L 20 60 M 62 96 L 110 118 L 138 84 M 62 96 L 96 34 L 138 22" />
+          <circle cx="20" cy="150" r="3.5"/><circle cx="62" cy="96" r="5"/>
+          <circle cx="20" cy="60" r="3"/><circle cx="110" cy="118" r="4"/><circle cx="96" cy="34" r="3.5"/>
+        </svg>
+        <div class="gcap">familiarity gate,<br>k-NN, watching</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="mono">phant0mhriju@gmail.com</span>
+  <span class="mono"><a href="https://github.com/hr1juldey">github</a> · <a href="https://www.linkedin.com/in/dey-h-ml972">linkedin</a></span>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+---
+const gh = "https://github.com/hr1juldey";
+const video = "https://github.com/hr1juldey/histogate/releases/download/v1.0/histogate_walkthrough_voiced_v5.mp4";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hrijul Dey — measured systems, shipped</title>
+  <meta name="description" content="Agent infrastructure in production; medical and motion ML since 2019. Every system gets a gate that can fail and a number that can be read." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%235e6ad2'/><text x='16' y='22' font-size='16' font-family='monospace' fill='white' text-anchor='middle'>H</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08090a; --t1: #f7f8f8; --t2: #c3c6cb; --t3: #8a8f98; --t4: #62676f;
+      --b-subtle: #ffffff0d; --b-std: #ffffff1a; --accent: #5e6ad2; --ok2: #4ae38b;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--t1); font-family: Inter, system-ui, sans-serif;
+      line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 860px; margin: auto; padding: 0 24px; }
+    a { color: inherit; }
+    .mono { font-family: var(--mono); }
+
+    nav { position: sticky; top: 0; z-index: 10; background: rgba(8,9,10,0.82);
+      backdrop-filter: blur(10px); border-bottom: 1px solid var(--b-subtle); }
+    .navrow { display: flex; align-items: center; gap: 18px; height: 56px; }
+    .mark { display: flex; gap: 8px; align-items: center; font-weight: 600; font-size: 14.5px; text-decoration: none; }
+    .mark i { width: 20px; height: 20px; border-radius: 6px; background: var(--accent);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-style: normal; font-family: var(--mono); font-size: 12px; color: #fff; }
+    .navlinks { margin-left: auto; display: flex; gap: 16px; font-size: 13.5px; }
+    .navlinks a { color: var(--t3); text-decoration: none; }
+    .navlinks a:hover { color: var(--t1); }
+
+    header { padding: 96px 0 40px; }
+    .kicker { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--t4); margin-bottom: 18px; }
+    h1 { font-size: clamp(34px, 5.4vw, 56px); font-weight: 500; letter-spacing: -1.4px; line-height: 1.06; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { font-size: 17.5px; color: var(--t3); max-width: 560px; margin-top: 22px; }
+    .cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; height: 38px; padding: 0 16px;
+      border-radius: 9px; font-size: 13.5px; text-decoration: none; }
+    .btn.primary { background: var(--accent); color: #fff; font-weight: 500; }
+    .btn.primary:hover { background: #6e79dd; }
+    .btn.ghost { border: 1px solid var(--b-std); color: var(--t2); }
+    .btn.ghost:hover { color: var(--t1); border-color: #ffffff2e; }
+
+    section { padding: 44px 0; border-top: 1px solid var(--b-subtle); }
+    h2 { font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--t4); margin-bottom: 26px; font-family: var(--mono); }
+
+    .story { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+    .story .era b { display: block; font-size: 15.5px; font-weight: 600; margin-bottom: 6px; }
+    .story .era span { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+    .story .era p { font-size: 14px; color: var(--t3); margin-top: 6px; }
+
+    .feature { border: 1px solid var(--b-std); border-radius: 14px; overflow: hidden; background: #ffffff04; }
+    .feature video { width: 100%; display: block; background: #000; aspect-ratio: 16/9; object-fit: contain; }
+    .fbody { padding: 22px 24px 26px; }
+    .fbody h3 { font-size: 21px; font-weight: 600; letter-spacing: -0.4px; }
+    .fbody h3 span { color: var(--t4); font-weight: 400; font-size: 14px; margin-left: 10px; }
+    .fbody p { font-size: 14.5px; color: var(--t3); margin-top: 10px; }
+    .facts { display: flex; gap: 26px; margin-top: 18px; flex-wrap: wrap; }
+    .facts div b { display: block; font-family: var(--mono); font-size: 19px; color: var(--t1); }
+    .facts div i { font-style: normal; font-size: 11.5px; color: var(--t4); }
+
+    .proj { display: grid; gap: 12px; }
+    .prow { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--b-subtle); }
+    .prow:last-child { border-bottom: none; }
+    .prow a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--t1); white-space: nowrap; }
+    .prow a:hover { color: var(--accent); }
+    .prow span { font-size: 13.5px; color: var(--t3); }
+
+    footer { padding: 44px 0 60px; border-top: 1px solid var(--b-subtle);
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--t4); }
+    footer a { color: var(--t3); text-decoration: none; }
+    footer a:hover { color: var(--t1); }
+    @media (max-width: 640px) { .navlinks span.opt { display: none; } }
+  </style>
+</head>
+<body>
+  <nav><div class="wrap navrow">
+    <a class="mark" href="/"><i>H</i>Hrijul Dey</a>
+    <div class="navlinks">
+      <span class="opt"><a href="#work">Work</a></span>
+      <span class="opt"><a href="#projects">Projects</a></span>
+      <a href={gh} target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/dey-h-ml972" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div></nav>
+
+  <header><div class="wrap">
+    <div class="kicker">Thane, India · open to remote</div>
+    <h1>I build systems that<br /><em>refuse to guess.</em></h1>
+    <p class="lead">Agent infrastructure in production by day — an MCP gateway serving a 500-person org.
+      Medical and motion ML since 2019. Every system I ship gets a gate that can fail
+      and a number that can be read. Measured, not felt.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://histogate.vercel.app" target="_blank" rel="noopener">Try the live demo →</a>
+      <a class="btn ghost" href={gh} target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div></header>
+
+  <section id="work"><div class="wrap">
+    <h2>The story, short</h2>
+    <div class="story">
+      <div class="era">
+        <span>2019 — 2024</span>
+        <b>Medical &amp; motion AI</b>
+        <p>Posture detection, gait analysis, joint loading on CMU motion capture. Learned that a model passing every expected test can still fail the patient.</p>
+      </div>
+      <div class="era">
+        <span>2025 —</span>
+        <b>Agents &amp; LLM systems</b>
+        <p>Built and run the agent platform an organization depends on daily: routing, token budgets, failure isolation — token cost down 15× while usage went org-wide.</p>
+      </div>
+      <div class="era">
+        <span>Now</span>
+        <b>Both at once</b>
+        <p>HistoGate: pathology ML with production discipline — nine shipping gates, published failures, a live demo on my own hardware.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="featured"><div class="wrap">
+    <h2>Featured — shipped and public</h2>
+    <div class="feature">
+      <video controls preload="metadata" playsinline src={video}
+        poster="https://histogate.vercel.app/histogate_walkthrough_poster.png">
+        HistoGate narrated walkthrough</video>
+      <div class="fbody">
+        <h3>HistoGate <span>stain-invariant tissue classifier</span></h3>
+        <p>A 9-class colorectal H&amp;E classifier that declines unfamiliar tissue instead of guessing —
+        Beer-Lambert stain physics baked into training, a k-NN familiarity gate, conformal prediction sets.
+        Served live from my own GPU. The three failed training runs are published in the repo, not hidden.</p>
+        <div class="facts">
+          <div><b>0.9781</b><i>external macro-F1</i></div>
+          <div><b>0.0064</b><i>calibration error</i></div>
+          <div><b>51×</b><i>smaller than baseline</i></div>
+          <div><b>455/s</b><i>patches on one GPU</i></div>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://histogate.vercel.app" target="_blank" rel="noopener">Live demo</a>
+          <a class="btn ghost" href={gh + "/histogate"} target="_blank" rel="noopener">Source &amp; failure log</a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2>Other public work</h2>
+    <div class="proj">
+      <div class="prow">
+        <a href={gh + "/ctx-gateway"} target="_blank" rel="noopener">ctx-gateway</a>
+        <span>The gateway pattern from my day job, rebuilt clean-room in public — capability registry, per-task routing, token budgets, runnable benchmark.</span>
+      </div>
+      <div class="prow">
+        <a href={gh + "/VerifAI"} target="_blank" rel="noopener">VerifAI</a>
+        <span>Fraud detection with self-supervised representation learning. Precision/recall gates, not vibes.</span>
+      </div>
+      <div class="prow">
+        <a href={gh} target="_blank" rel="noopener">Upstream contributions</a>
+        <span>22 PRs across 6 orgs in one week — huggingface/smolagents (one merged), NousResearch/hermes-agent, trailhq/Trail-Code. Found by running the tools daily.</span>
+      </div>
+    </div>
+  </div></section>
+
+  <footer><div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <span>Hrijul Dey · <a href="mailto:phant0mhriju@gmail.com">phant0mhriju@gmail.com</a></span>
+    <span><a href={gh} target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/dey-h-ml972" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div></footer>
+</body>
+</html>
